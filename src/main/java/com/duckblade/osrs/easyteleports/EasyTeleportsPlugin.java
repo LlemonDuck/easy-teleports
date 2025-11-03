@@ -3,9 +3,9 @@ package com.duckblade.osrs.easyteleports;
 import com.duckblade.osrs.easyteleports.replacers.*;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.inject.Binder;
 import com.google.inject.Provides;
-import com.google.inject.multibindings.Multibinder;
 
 import java.util.List;
 import java.util.Map;
@@ -76,34 +76,60 @@ public class EasyTeleportsPlugin extends Plugin
 	@Inject
 	private Set<Replacer> replacers;
 
-	@Override
-	public void configure(Binder binder)
+	@Provides
+	public Set<Replacer> provideReplacers(
+		DiaryCape diaryCape,
+		DrakansMedallion drakansMedallion,
+		KharedstMemoirs kharedstMemoirs,
+		PharaohSceptre pharaohSceptre,
+		RingOfDueling ringOfDueling,
+		RingOfShadows ringOfShadows,
+		SlayerRing slayerRing,
+		XericsTalisman xericsTalisman,
+		NecklaceOfPassage necklaceOfPassage,
+		PendantOfAtes pendantOfAtes,
+		DigsitePendant digsitePendant,
+		BurningAmulet burningAmulet,
+		EnchantedLyre enchantedLyre,
+		GhommalsHilt ghommalsHilt,
+		Camulet camulet,
+		EternalTeleportCrystal eternalTeleportCrystal,
+		GrandSeedPod grandSeedPod,
+		RadasBlessing radasBlessing,
+		KaramjaGloves karamjaGloves,
+		MorytaniaLegs morytaniaLegs,
+		DesertAmulet desertAmulet,
+		RingOfTheElements ringOfTheElements,
+		GiantsoulAmulet giantsoulAmulet,
+		MaxCape maxCape
+	)
 	{
-		Multibinder<Replacer> replacers = Multibinder.newSetBinder(binder, Replacer.class);
-		replacers.addBinding().to(DiaryCape.class);
-		replacers.addBinding().to(DrakansMedallion.class);
-		replacers.addBinding().to(KharedstMemoirs.class);
-		replacers.addBinding().to(PharaohSceptre.class);
-		replacers.addBinding().to(RingOfDueling.class);
-		replacers.addBinding().to(RingOfShadows.class);
-		replacers.addBinding().to(SlayerRing.class);
-		replacers.addBinding().to(XericsTalisman.class);
-		replacers.addBinding().to(NecklaceOfPassage.class);
-		replacers.addBinding().to(PendantOfAtes.class);
-		replacers.addBinding().to(DigsitePendant.class);
-		replacers.addBinding().to(BurningAmulet.class);
-		replacers.addBinding().to(EnchantedLyre.class);
-		replacers.addBinding().to(GhommalsHilt.class);
-		replacers.addBinding().to(Camulet.class);
-		replacers.addBinding().to(EternalTeleportCrystal.class);
-		replacers.addBinding().to(GrandSeedPod.class);
-		replacers.addBinding().to(RadasBlessing.class);
-		replacers.addBinding().to(KaramjaGloves.class);
-		replacers.addBinding().to(MorytaniaLegs.class);
-		replacers.addBinding().to(DesertAmulet.class);
-		replacers.addBinding().to(RingOfTheElements.class);
-		replacers.addBinding().to(GiantsoulAmulet.class);
-		replacers.addBinding().to(MaxCape.class);
+		return ImmutableSet.of(
+			diaryCape,
+			drakansMedallion,
+			kharedstMemoirs,
+			pharaohSceptre,
+			ringOfDueling,
+			ringOfShadows,
+			slayerRing,
+			xericsTalisman,
+			necklaceOfPassage,
+			pendantOfAtes,
+			digsitePendant,
+			burningAmulet,
+			enchantedLyre,
+			ghommalsHilt,
+			camulet,
+			eternalTeleportCrystal,
+			grandSeedPod,
+			radasBlessing,
+			karamjaGloves,
+			morytaniaLegs,
+			desertAmulet,
+			ringOfTheElements,
+			giantsoulAmulet,
+			maxCape
+		);
 	}
 
 	@Override
